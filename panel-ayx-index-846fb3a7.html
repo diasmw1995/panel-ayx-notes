@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>再访 · 爱游戏 | 导航页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f5f7;
+      color: #1e2a3a;
+      line-height: 1.6;
+      padding: 2rem 1.5rem;
+    }
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* 顶部导航 */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem 0.5rem;
+      padding: 0.75rem 1.25rem;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      border: 1px solid #e5e9f0;
+      margin-bottom: 2.5rem;
+    }
+    .brand {
+      font-weight: 600;
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+      color: #233142;
+      background: #edf1f7;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #3b4d62;
+      font-size: 0.95rem;
+      position: relative;
+      padding: 0.2rem 0;
+      transition: color 0.2s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #3e6b9e;
+      transition: width 0.2s;
+    }
+    .nav-links a:hover {
+      color: #1f3752;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* hero */
+    .hero {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 3.5rem 2.5rem;
+      margin-bottom: 2.5rem;
+      border: 1px solid #e2e7ef;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.02);
+    }
+    .hero h1 {
+      font-size: 2.1rem;
+      font-weight: 550;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.75rem;
+      color: #192839;
+    }
+    .hero p {
+      max-width: 660px;
+      color: #3b4d62;
+      font-size: 1.05rem;
+    }
+
+    /* 卡片通用 */
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      border: 1px solid #e2e7ef;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      transition: box-shadow 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    }
+    .card h2, .card h3 {
+      font-weight: 540;
+      color: #1d2d41;
+      margin-bottom: 1rem;
+    }
+    .card p, .card li {
+      color: #2a3f56;
+      font-size: 0.98rem;
+    }
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .card li {
+      position: relative;
+      padding-left: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .card li::before {
+      content: "·";
+      position: absolute;
+      left: 0.2rem;
+      color: #6c7f96;
+      font-weight: 600;
+    }
+
+    /* 三场景网格 */
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin-bottom: 2.5rem;
+    }
+    @media (max-width: 780px) {
+      .scenes-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 常见说明 */
+    .faq-section {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 2rem 2rem;
+      border: 1px solid #e2e7ef;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      margin-bottom: 2.5rem;
+    }
+    .faq-item {
+      border-bottom: 1px solid #eef2f7;
+      padding: 1rem 0;
+    }
+    .faq-item:last-of-type {
+      border-bottom: none;
+    }
+    .faq-item strong {
+      display: block;
+      font-weight: 540;
+      color: #1d2d41;
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+    }
+
+    .footnote {
+      text-align: center;
+      color: #657b93;
+      font-size: 0.9rem;
+      padding: 1rem 0 0.5rem;
+      border-top: 1px solid #dce2ec;
+      margin-top: 0.8rem;
+    }
+    .footnote a {
+      color: #2c5179;
+      text-decoration: none;
+      border-bottom: 1px dotted #b1c3d7;
+    }
+    .footnote a:hover {
+      border-bottom: 1px solid #1f3752;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 480px) {
+      body { padding: 1.2rem 0.8rem; }
+      .hero { padding: 2rem 1.2rem; }
+      .hero h1 { font-size: 1.6rem; }
+      .card { padding: 1.4rem 1.2rem; }
+      .faq-section { padding: 1.2rem; }
+      .top-nav { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 顶部导航 -->
+  <header class="top-nav">
+    <span class="brand">📌 导航</span>
+    <nav class="nav-links">
+      <a href="#repeat-visit">再次访问</a>
+      <a href="#bookmark">收藏备忘</a>
+      <a href="#scene">使用场景</a>
+      <a href="#faq">常见说明</a>
+    </nav>
+  </header>
+
+  <!-- hero 介绍 -->
+  <section class="hero">
+    <h1>再次访问 · 整理过的说明</h1>
+    <p>
+      如果你曾来过这里，或者只是偶然发现，想要在之后继续关注，不妨先理清几个简单的方向。
+      从再次打开、添加到书签，到日常使用中的几个角落，这里梳理了值得留意的要点。
+    </p>
+  </section>
+
+  <!-- 三个场景模块（内置核心链接） -->
+  <div class="scenes-grid" id="scene">
+
+    <div class="card">
+      <h3>🔄 再次访问</h3>
+      <p>当你想要回到这个页面，最直接的办法就是记住一个名字：<a href="https://panel-ayx.com.cn" style="font-weight: 500; color: #1f4e7a; text-decoration: none; border-bottom: 1px solid #b8cee7;">爱游戏</a>。
+      无论是通过浏览器历史还是直接输入，保持简单就好。如果希望更快，可以在第一次访问时随手收藏。
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>🔖 收藏与标签</h3>
+      <p>在桌面浏览器按 <kbd style="background: #eef2f6; padding: 0.1rem 0.5rem; border-radius: 6px; border: 1px solid #d0d9e5;">Ctrl+D</kbd>（或移动端菜单里的「添加书签」），把
+        <a href="https://panel-ayx.com.cn" style="font-weight: 500; color: #1f4e7a; text-decoration: none; border-bottom: 1px solid #b8cee7;">爱游戏</a>
+        放到一个你能快速找到的文件夹。以后每次想了解或更新信息，就不必重新搜索了。
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>📋 持续关注</h3>
+      <p>如果你希望定期回来看看，可以每隔一段时间直接打开书签。网站的内容与动态会自然更新，你只需保持关注。
+      对于常驻用户，把 <a href="https://panel-ayx.com.cn" style="font-weight: 500; color: #1f4e7a; text-decoration: none; border-bottom: 1px solid #b8cee7;">爱游戏</a>
+      设为浏览器主页或新标签页的快捷方式也是个办法。
+      </p>
+    </div>
+
+  </div>
+
+  <!-- 常见说明 / FAQ 摘要 -->
+  <section class="faq-section" id="faq">
+    <h2 style="font-weight: 540; margin-bottom: 0.25rem; color: #1d2d41;">常见说明</h2>
+    <p style="color: #4a617c; margin-bottom: 1rem; font-size: 0.95rem;">一些你可能想问的，这里先整理出来。</p>
+
+    <div class="faq-item">
+      <strong>为什么要再次收藏？</strong>
+      <p>浏览器的书签不会自动消失，但如果你清理过历史或换了设备，收藏夹里的链接是最可靠的。把<a href="https://panel-ayx.com.cn" style="color: #1f4e7a; text-decoration: none; border-bottom: 1px solid #b8cee7;">爱游戏</a>存好，下次直接点开就行。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>页面内容会变化吗？</strong>
+      <p>作为持续维护的站点，内容会按需更新和补充。你看到的信息以实际页面为准。收藏之后定期回看，就不会错过调整。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>有哪些使用上的注意事项？</strong>
+      <p>建议使用常用浏览器的最新版本，保持网络通畅。如果你需要更具体的操作指引，可以在站内相应区域查找说明。</p>
+    </div>
+
+    <div class="faq-item" style="border-bottom: none;">
+      <strong>如果找不到想要的内容？</strong>
+      <p>可以尝试站内的导航或搜索功能。部分内容可能位于特定板块，稍微浏览几个页面一般就能找到。</p>
+    </div>
+  </section>
+
+  <!-- 底部提示（再次出现链接，自然嵌入） -->
+  <div class="footnote">
+    本页是对 <a href="https://panel-ayx.com.cn">爱游戏</a> 的整理性介绍，方便再次访问和持续关注。
+  </div>
+
+</div>
+</body>
+</html>
